@@ -1,4 +1,6 @@
-﻿using Zenject;
+﻿using Jelewow.Asteroids.Enemy.Services;
+using Jelewow.Asteroids.Extensions;
+using Zenject;
 
 namespace Jelewow.Asteroids.Enemy
 {
@@ -6,7 +8,7 @@ namespace Jelewow.Asteroids.Enemy
     {
         public override void InstallBindings()
         {
-            
+            Container.BindService<EnemyMoveService>();
         }
     }
 }

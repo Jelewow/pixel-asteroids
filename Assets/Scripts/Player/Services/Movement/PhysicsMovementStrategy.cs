@@ -1,4 +1,5 @@
-﻿using Jelewow.Asteroids.Player.MonoBehaviours;
+﻿using Jelewow.Asteroids.AbstractFactory;
+using Jelewow.Asteroids.Player.MonoBehaviours;
 using Jelewow.Asteroids.Player.ScriptableObjects;
 using Jelewow.Asteroids.Player.Types;
 using UnityEngine;
@@ -9,11 +10,11 @@ namespace Jelewow.Asteroids.Player.Services.Movement
     public class PhysicsMovementStrategy : IMovementStrategy
     {
         [Inject] private readonly PlayerConfig _config;
-        [Inject] private readonly PlayerInstanceService _playerView;
+        [Inject] private readonly PlayerInstanceService _playerInstanceService;
         
         public void Move(PlayerInputData inputData)
         {
-            var playerInstance = _playerView.PlayerViewInstance;
+            var playerInstance = _playerInstanceService.Player;
             
             Moving(inputData, playerInstance);
             Rotating(inputData, playerInstance);

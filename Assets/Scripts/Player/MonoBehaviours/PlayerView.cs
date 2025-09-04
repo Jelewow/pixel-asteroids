@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Jelewow.Asteroids.AbstractFactory;
+using UnityEngine;
+using Zenject;
 
 namespace Jelewow.Asteroids.Player.MonoBehaviours
 {
@@ -6,5 +8,10 @@ namespace Jelewow.Asteroids.Player.MonoBehaviours
     {
         [field: SerializeField] 
         public Rigidbody2D Rigidbody { get; private set; }
+        
+        public class PlayerFactory : PlaceholderFactory<PlayerView>
+        {
+        
+        }
     }
 }

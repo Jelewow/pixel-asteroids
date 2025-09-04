@@ -1,4 +1,6 @@
-﻿using Jelewow.Asteroids.Extensions;
+﻿using Jelewow.Asteroids.AbstractFactory;
+using Jelewow.Asteroids.Extensions;
+using Jelewow.Asteroids.Player.Factories;
 using Jelewow.Asteroids.Player.MonoBehaviours;
 using Jelewow.Asteroids.Player.ScriptableObjects;
 using Jelewow.Asteroids.Player.Services;
@@ -16,6 +18,8 @@ namespace Jelewow.Asteroids.Player
         public override void InstallBindings()
         {
             Container.BindPrefab(_playerView);
+            Container.BindFactory<PlayerView, PlayerView.PlayerFactory>();
+            
             Container.BindService<PlayerInstanceService>();
             
             Container.BindService<PlayerInputService>();
@@ -23,6 +27,9 @@ namespace Jelewow.Asteroids.Player
             
             Container.BindService<PhysicsMovementStrategy>();
             Container.BindService<PlayerMovementService>();
+
+            // Container.BindFactory<PlayerView, PlayerView, PlayerZenjectFactory>();
+            // Container.Bind<ICustomFactory<PlayerView>>().FromSubContainerResolve().ByInstaller<PlayerFactoryInstaller>().AsSingle();
         }
     }
 }
